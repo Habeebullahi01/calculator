@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background: cornflowerblue;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 .5em;
+}
+
+button {
+    padding: .5em;
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+.calculator {
+    width: 20em;
+    height: 70%;
+    overflow: hidden;
+}
+
+.screen {
+    height: 30%;
+    padding: 1em;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    /* word-wrap: break-word; */
+    word-break: break-all;
+    /* overflow: hidden; */
+}
+
+.output {
+    font-size: 2.5rem;
+    text-align: right;
+    font-weight: 500;
+}
+
+.input {
+    font-size: 1.5rem;
+    text-align: right;
+    opacity: .5;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr .3fr;
+    width: 100%;
+    height: 60%;
+    background: rgb(26, 26, 26);
+    position: relative;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+}
+
+.operators {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: royalblue;
+    border-left: 1px solid rgba(255,255,255, .1);
+}
+
+.open--side-keys,
+.close--side-keys {
+    color: white;
+    background: royalblue;
+}
+
+.extra--keys {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.7);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    transform: translateX(100%);
+    transition: transform .2s ease-in-out;
+}
+
+.open--extra {
+    transform: translateX(0%);
+}
+
+.scientific--keys {
+    width: 77%;
+    height: 100%;
+    background: royalblue;
+    display: grid;
+    grid-template-columns: .3fr 2fr;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+}
+
+.keys button {
+    font-size: 1.2rem;
+}
+
+.number:hover, .operator:hover, .scientific--operator:hover {
+    background-color: rgba(255,255,255, .1);
+}
