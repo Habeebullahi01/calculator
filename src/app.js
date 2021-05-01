@@ -39,7 +39,7 @@ class Calculator {
         let computation;
         let current;
         let prev;
-        if(this.currentOperand.includes('sin')||this.currentOperand.includes('cos')||this.currentOperand.includes('tan')||this.currentOperand.includes('sqrt')||this.currentOperand.includes('log')) {
+        if(this.currentOperand.includes('sin')||this.currentOperand.includes('cos')||this.currentOperand.includes('tan')||this.currentOperand.includes('sqrt')||this.currentOperand.includes('log')||this.currentOperand.includes('e')) {
             var op, cp, num;
             op = this.currentOperand.indexOf('(');
             cp = this.currentOperand.indexOf(')');
@@ -51,7 +51,7 @@ class Calculator {
             } else {                
                 this.updateDisplay();
             }
-        } else if (this.previousOperand.includes('sin')||this.previousOperand.includes('cos')||this.previousOperand.includes('tan')||this.previousOperand.includes('sqrt')||this.previousOperand.includes('log')) {
+        } else if (this.previousOperand.includes('sin')||this.previousOperand.includes('cos')||this.previousOperand.includes('tan')||this.previousOperand.includes('sqrt')||this.previousOperand.includes('log')||this.previousOperand.includes('e')) {
             var op, cp, num;
             op = this.previousOperand.indexOf('(');
             cp = this.previousOperand.indexOf(')');
@@ -76,6 +76,9 @@ class Calculator {
                 case '/':
                     computation = prev / current;
                     break 
+                case '^':
+                    computation = Math.pow(prev, current);
+                    break    
                 default:
                     return     
             }
@@ -107,8 +110,11 @@ class Calculator {
                 computation = Math.sqrt(number); 
                 break 
             case 'log':
-                computation = Math.log(number);
+                computation = Math.log10(number);
                 break          
+            case 'e':
+                computation = Math.exp(number);
+                break     
             default:
                 console.log('Not Found');
                 break
@@ -191,6 +197,9 @@ const previousOperandDisplay = document.querySelector('[data-previous-operand')
 const trigButtons = document.querySelectorAll('[data-trig]')
 const sqrt = document.querySelector('[data-sqrt]')
 const log = document.querySelector('[data-log]')
+const exp = document.querySelector('[data-exp]')
+const pi = document.querySelector('[data-pi]')
+const power = document.querySelector('[data-power')
 const parentheses = document.querySelectorAll('[data-bracket]')
 
 
@@ -259,3 +268,21 @@ parentheses.forEach(button => {
         calculator.updateDisplay();
     })
 })
+
+exp.addEventListener('click', () => {
+    calculator.chooseTrig('e');
+    calculator.updateDisplay();
+})
+
+pi.addEventListener('click', () => {
+    calculator.appendNumber(Math.PI.toFixed(2));
+    calculator.updateDisplay();
+})
+
+power.addEventListener('click', () => {
+    calculator.chooseOperation(power.textContent);
+    calculator.updateDisplay();
+})
+
+//
+// Math.
